@@ -4,6 +4,6 @@
  <% else %>
    <h1>Welcome to TweetMark</h1>
    <h2>You can finally bookmark your tweets</h2>
-    <%= link_to "Sign in with Twitter!", "/auth/twitter", class: "btn btn-large btn-primary"%>
+	<%= link_to image_tag("/assets/twitter-signin.png", alt: "Sign In With Twitter"), "/auth/twitter"%>
  <% end %>
 </div>
