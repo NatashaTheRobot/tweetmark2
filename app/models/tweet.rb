@@ -22,8 +22,7 @@ class Tweet < ActiveRecord::Base
       #get user info
       users = User.all
       users.each do |user_hash|
-          user = user_hash['user']
-          user_id = user['id']     
+          user = user_hash['user']   
       
           #get tweet info for each user
           client = TwitterOAuth::Client.new(
@@ -45,7 +44,7 @@ class Tweet < ActiveRecord::Base
               break if Tweet.exists?(tweet["id"])
               url_array = tweet["entities"]["urls"]
               next if url_array == []  
-              params = { :user_id => user_id,
+              params = { :user_id => user['id'],
                           :created_at => tweet["created_at"],
                           :tweetid => tweet["id"],
                           :text => CGI.escape(tweet["text"]) }
