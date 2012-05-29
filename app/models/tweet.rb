@@ -21,9 +21,8 @@ class Tweet < ActiveRecord::Base
       
       #get user info
       users = User.all
-      users.each do |user_hash|
-          user = user_hash['user']   
-          p user
+      users.each do |user|
+          
           #get tweet info for each user
           client = TwitterOAuth::Client.new(
               :consumer_key => ENV['TWITTER_KEY'],
@@ -62,7 +61,8 @@ class Tweet < ActiveRecord::Base
               end
               params[:urls] = urls #there might be multiple urls per tweet, seperated by http as delimeter 
               p params
-              Tweet.new(params)
+              tweet = Tweet.new(params)
+              tweet.save
           end
       end
   end
