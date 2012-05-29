@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 gem 'omniauth-twitter'
 gem 'bootstrap-sass', '2.0.0'
+gem 'cgi-spa'
+gem 'cgi'
+gem 'twitter_oauth'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
