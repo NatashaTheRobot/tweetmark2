@@ -8,10 +8,10 @@
 			<% if @user.tweets.any? %>
 			<h3>Your TweetMarks (<%= @user.tweets.count %>)</h3>
 			<div class="tweets">
-				<%= render @tweets %>
+				<%= render @tweets.sort_by{|t| t.tweetid}.reverse %>
             </div>
 		    <% end %>
-		</li>
+		</ul>
 	</div>
 </div>
 <% else %>
