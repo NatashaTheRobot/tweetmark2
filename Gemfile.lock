@@ -40,9 +40,6 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
-    cgi-spa (0.7.1)
-      builder
-      json
     childprocess (0.3.2)
       ffi (~> 1.0.6)
     coffee-rails (3.2.2)
@@ -178,7 +175,6 @@ DEPENDENCIES
   annotate (~> 2.4.1.beta)
   bootstrap-sass (= 2.0.0)
   capybara (= 1.1.2)
-  cgi-spa
   coffee-rails (= 3.2.2)
   jquery-rails (= 2.0.0)
   omniauth-twitter
