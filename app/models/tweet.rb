@@ -23,19 +23,19 @@ class Tweet < ActiveRecord::Base
       users = User.all
       users.each do |user_hash|
           user = user_hash['user']   
-      
+          p user
           #get tweet info for each user
           client = TwitterOAuth::Client.new(
               :consumer_key => ENV['TWITTER_KEY'],
               :consumer_secret => ENV['TWITTER_SECRET'],
-              :token => user['auth_token'],
-              :secret => user['auth_secret']
+              :token => user[:auth_token],
+              :secret => user[:auth_secret]
               )
 
           tweets = client.user_timeline({
               "include_entities" => true, 
               "include_rts" => true, 
-              "screen_name" => "#{user['screen_name']}",
+              "screen_name" => "#{user[:screen_name]}",
               "count" => 200
               })
           
