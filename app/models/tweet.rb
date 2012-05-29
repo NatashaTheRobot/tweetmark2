@@ -17,7 +17,7 @@ class Tweet < ActiveRecord::Base
   validates :tweetid, uniqueness: true
   belongs_to :user
   
-  def get_tweets
+  def self.get_tweets
       
       #get user info
       users = User.all
