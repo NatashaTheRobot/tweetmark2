@@ -46,7 +46,8 @@ class Tweet < ActiveRecord::Base
               params = { :user_id => user['id'],
                           :created_at => tweet["created_at"],
                           :tweetid => tweet["id"],
-                          :text => CGI.escape(tweet["text"]) }
+                          :text => CGI.escape(tweet["text"]),
+                          :urls => url_array[0] } #only the first url is stored
               hashtag_array = tweet["entities"]["hashtags"]
               if hashtag_array != []
                   hashtags = ""  
@@ -55,11 +56,6 @@ class Tweet < ActiveRecord::Base
                   end
                   params[:hashtags] = hashtags
               end
-              urls = ""
-              url_array.each do |url_hash|
-                  urls << url_hash["expanded_url"]
-              end
-              params[:urls] = urls #there might be multiple urls per tweet, seperated by http as delimeter 
               p params
               tweet = Tweet.new(params)
               tweet.save

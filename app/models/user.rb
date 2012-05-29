@@ -15,7 +15,7 @@
 
 class User < ActiveRecord::Base
   attr_accessible :auth_secret, :auth_token, :image, :name, :screen_name, :uid
-    has_many :tweets
+    has_many :tweets, dependent: :destroy
   
   def self.create_with_omniauth(auth)
     create! do |user|

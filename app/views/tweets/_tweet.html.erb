@@ -1,0 +1,6 @@
+<div class='tweet' id='<% tweet.id %>'>
+  <span class="text"><%= link_to CGI::unescape(tweet.text), tweet.urls, :target => '_blank' %></span>
+  <span class="timestamp">
+    <%= time_ago_in_words(tweet.created_at) %> ago.
+  </span>
+</div>

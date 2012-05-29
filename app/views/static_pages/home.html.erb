@@ -1,9 +1,28 @@
-<div class="center hero-unit">
  <% if current_user %>
-  	Welcome <%= current_user.name %>!
- <% else %>
+<div class="row">
+	<div class="span2" id="tag-sidebar">
+		<ul>
+			<li>Here a tag</li>
+			<li>There a tag</li>
+			<li>Everywhere a tag tag</li>
+		</ul>
+	</div>
+	<div class="span8">
+		<ul>
+			<% if @user.tweets.any? %>
+			<h3>Your TweetMarks (<%= @user.tweets.count %>)</h3>
+			<div class="tweets">
+				<%= render @tweets %>
+            </div>
+		    <% end %>
+		</li>
+	</div>
+</div>
+<% else %>
+<div class="center hero-unit">
    <h1>Welcome to TweetMark</h1>
    <h2>You can finally bookmark your tweets</h2>
-	<%= link_to image_tag("/assets/twitter-signin.png", alt: "Sign In With Twitter"), "/auth/twitter"%>
- <% end %>
+       <%= link_to image_tag("/assets/twitter-signin.png", alt: "Sign In With Twitter"), "/auth/twitter"%>
 </div>
+<% end %>
+
