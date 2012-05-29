@@ -1,0 +1,9 @@
+<div class="center hero-unit">
+ <% if current_user %>
+  	Welcome <%= current_user.name %>!
+ <% else %>
+   <h1>Welcome to TweetMark</h1>
+   <h2>You can finally bookmark your tweets</h2>
+    <%= link_to "Sign in with Twitter!", "/auth/twitter", class: "btn btn-large btn-primary"%>
+ <% end %>
+</div>
