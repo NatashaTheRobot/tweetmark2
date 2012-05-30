@@ -16,6 +16,7 @@ class StaticPagesController < ApplicationController
                         @hashtags << hashtag[:text] unless @hashtags.include?(hashtag[:text])
                     end
                 end
+            @hashtags.sort! #sort hashtags alphabetically    
             end
         end
     end

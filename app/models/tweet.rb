@@ -62,7 +62,7 @@ class Tweet < ActiveRecord::Base
               #adding hashtags
               if hashtag_array != [] and newtweet.id != nil
                   hashtag_array.each do |hashtag_hash| 
-                      text = hashtag_hash["text"]
+                      text = hashtag_hash["text"].downcase
                       hashtag = Hashtag.new({:text => text, :tweet_id => newtweet.id})
                       hashtag.save 
                   end
@@ -110,7 +110,7 @@ class Tweet < ActiveRecord::Base
               #adding hashtags
               if hashtag_array != [] and newtweet.id != nil
                   hashtag_array.each do |hashtag_hash| 
-                      text = hashtag_hash["text"]
+                      text = hashtag_hash["text"].downcase
                       hashtag = Hashtag.new({:text => text, :tweet_id => newtweet.id})
                       hashtag.save 
                   end
