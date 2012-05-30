@@ -7,6 +7,7 @@ class StaticPagesController < ApplicationController
          @tweets = @user.tweets
          @hashtags = []
          @tweets.each do |tweet|
+             #get hashtags for each tweet and add unique hashtags to the hashtags array
              hashtags = Hashtag.where(:tweet_id => tweet.id)
              if hashtags != []
                  hashtags.each do |hashtag|

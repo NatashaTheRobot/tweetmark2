@@ -50,7 +50,10 @@ class Tweet < ActiveRecord::Base
                           :created_at => tweet["created_at"],
                           :tweetid => tweet["id"],
                           :text => CGI.escape(tweet["text"]),
-                          :urls => url_array[0] } #only the first url is stored
+                           }
+              url_hash = url_array[0]
+              url = url_hash["url"]
+              params[:urls] = url           
               hashtag_array = tweet["entities"]["hashtags"]
               p params
               newtweet = Tweet.new(params)
@@ -96,7 +99,10 @@ class Tweet < ActiveRecord::Base
                          :created_at => tweet["created_at"],
                          :tweetid => tweet["id"],
                          :text => CGI.escape(tweet["text"]),
-                         :urls => url_array[0] } #only the first url is stored
+                         } 
+              url_hash = url_array[0] #only the first url is stored
+              url = url_hash["url"]
+              params[:urls] = url             
               hashtag_array = tweet["entities"]["hashtags"]
               newtweet = Tweet.new(params)
               newtweet.save
