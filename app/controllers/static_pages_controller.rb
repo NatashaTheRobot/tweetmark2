@@ -7,9 +7,11 @@ class StaticPagesController < ApplicationController
          @tweets = @user.tweets
          @hashtags = []
          @tweets.each do |tweet|
-             hashtag = Hashtag.find_by_tweet_id(tweet.id)
-             if hashtag != nil
-                 @hashtags << hashtag.text unless @hashtags.include?(hashtag)
+             hashtags = Hashtag.where(:tweet_id => tweet.id)
+             if hashtags != []
+                 hashtags.each do |hashtag|
+                     @hashtags << hashtag[:text] unless @hashtags.include?(hashtag[:text])
+                 end
              end 
          end
      end
