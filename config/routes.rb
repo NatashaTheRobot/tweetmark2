@@ -4,4 +4,5 @@ Tweetmark::Application.routes.draw do
     match '/about',   to: 'static_pages#about'
     match "/auth/:provider/callback" => "sessions#create"
     match "/signout" => "sessions#destroy", :as => :signout
+    match '/tags/:hashtag' => "hashtags#hashtag"
 end

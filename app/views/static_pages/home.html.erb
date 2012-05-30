@@ -1,21 +1,22 @@
  <% if current_user %>
-
- <% Tweet.get_user_tweets(@user) %> 
+ <%= Tweet.get_user_tweets(@user) %>
 
 <div class="row-fluid">
 	<div class="span2" id="tag-sidebar">
 		<%= image_tag(@user.image) %>
 		
 		<ul>
+			<% unless @hashtags.nil? %>
 			<% @hashtags.each do |h| %>
-			   <li><%= "##{h}"%></li>
+			   <li><%= link_to "##{h}", "/tags/#{h}"%></li>
+			<% end %>
 			<% end %>
 		</ul>
 	</div>
 	<div class="span8">
 		<ul>
 			<% if @user.tweets.any? %>
-			<h3>Your TweetMarks (<%= @user.tweets.count %>)</h3>
+			<h3>Your TweetMarks </h3>
 			<div class="tweets">
 				<%= render @tweets.sort_by{|t| t.tweetid}.reverse %>
             </div>
