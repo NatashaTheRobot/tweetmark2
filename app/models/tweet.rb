@@ -57,7 +57,7 @@ class Tweet < ActiveRecord::Base
               newtweet.save
               
               #adding hashtags
-              if hashtag_array != []
+              if hashtag_array != [] and newtweet.id != nil
                   hashtag_array.each do |hashtag_hash| 
                       text = hashtag_hash["text"]
                       hashtag = Hashtag.new({:text => text, :tweet_id => newtweet.id})
