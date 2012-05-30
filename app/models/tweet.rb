@@ -41,7 +41,7 @@ class Tweet < ActiveRecord::Base
           
           #get the users last 200 tweets and add to db
           tweets.each do |tweet|
-              break if Tweet.exists?(tweet["id"])
+              break if Tweet.find_by_tweetid(tweet["id"]) != nil
               url_array = tweet["entities"]["urls"]
               next if url_array == []  
               
