@@ -1,4 +1,5 @@
  <% if current_user %>
+ <% Tweet.get_user_tweets(@user) %>
 <div class="row-fluid">
 	<div class="span2" id="tag-sidebar">
 		<%= image_tag(@user.image) %>
