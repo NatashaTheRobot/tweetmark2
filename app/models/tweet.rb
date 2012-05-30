@@ -16,6 +16,7 @@ class Tweet < ActiveRecord::Base
   attr_accessible :created_at, :hashtags, :text, :urls, :user_id, :tweetid
   validates :tweetid, uniqueness: true
   belongs_to :user
+  has_many :hashtags, dependent: :destroy
   
   def self.get_tweets
       
@@ -43,22 +44,26 @@ class Tweet < ActiveRecord::Base
               break if Tweet.exists?(tweet["id"])
               url_array = tweet["entities"]["urls"]
               next if url_array == []  
+              
+              #adding tweet
               params = { :user_id => user['id'],
                           :created_at => tweet["created_at"],
                           :tweetid => tweet["id"],
                           :text => CGI.escape(tweet["text"]),
                           :urls => url_array[0] } #only the first url is stored
               hashtag_array = tweet["entities"]["hashtags"]
-              if hashtag_array != []
-                  hashtags = ""  
-                  hashtag_array.each do |hashtag_hash|
-                      hashtags << "##{hashtag_hash["text"]}"
-                  end
-                  params[:hashtags] = hashtags
-              end
               p params
-              tweet = Tweet.new(params)
-              tweet.save
+              newtweet = Tweet.new(params)
+              newtweet.save
+              
+              #adding hashtags
+              if hashtag_array != []
+                  hashtag_array.each do |hashtag_hash| 
+                      text = hashtag_hash["text"]
+                      hashtag = Hashtag.new({:text => text, :tweet_id => newtweet.id})
+                      hashtag.save 
+                  end
+              end
           end
       end
   end
