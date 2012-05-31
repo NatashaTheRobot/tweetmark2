@@ -2,18 +2,19 @@
 #
 # Table name: tweets
 #
-#  id         :integer         not null, primary key
-#  created_at :string(255)     not null
-#  text       :string(255)
-#  hashtags   :string(255)
-#  urls       :string(255)
-#  user_id    :integer
-#  updated_at :datetime        not null
-#  tweetid    :integer
+#  id           :integer         not null, primary key
+#  created_at   :string(255)     not null
+#  text         :string(255)
+#  hashtags     :string(255)
+#  urls         :string(255)
+#  user_id      :integer
+#  updated_at   :datetime        not null
+#  tweetid      :integer
+#  extended_url :string(255)
 #
 
 class Tweet < ActiveRecord::Base
-  attr_accessible :created_at, :hashtags, :text, :urls, :user_id, :tweetid
+  attr_accessible :created_at, :hashtags, :text, :urls, :user_id, :tweetid, :extended_url
   validates :tweetid, uniqueness: true
   belongs_to :user
   has_many :hashtags, dependent: :destroy
@@ -53,7 +54,9 @@ class Tweet < ActiveRecord::Base
                            }
               url_hash = url_array[0]
               url = url_hash["url"]
-              params[:urls] = url           
+              params[:urls] = url   
+              extended_url = url_hash["expanded_url"]
+              params[:extended_url] = extended_url        
               hashtag_array = tweet["entities"]["hashtags"]
               p params
               newtweet = Tweet.new(params)
@@ -102,7 +105,9 @@ class Tweet < ActiveRecord::Base
                          } 
               url_hash = url_array[0] #only the first url is stored
               url = url_hash["url"]
-              params[:urls] = url             
+              extended_url = url_hash["expanded_url"]
+              params[:extended_url] = extended_url
+              params[:urls] = url            
               hashtag_array = tweet["entities"]["hashtags"]
               newtweet = Tweet.new(params)
               newtweet.save
