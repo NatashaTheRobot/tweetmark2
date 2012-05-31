@@ -14,10 +14,10 @@
 				<% unless @hashtags.nil? %>
 					<% @hashtags.each do |h| %>
 				   		<li class='home_nav_item'>
-							<%= link_to "##{h}  #{Hashtag.where(:text => h).count}", "/tags/#{h}"%>
+							<%= link_to "##{h}", "/tags/#{h}"%>
 						</li>
 					<% end %>
-					<li class='home_nav_item'> <%= link_to "untagged #{@tweets.count-@hashtags.count}", "/tags/notag"%></li>
+					<li class='home_nav_item'> <%= link_to "untagged", "/tags/notag"%></li>
 					<!--<li class="messages-item home_nav_item"><span class='unread'>5</span></li>-->
 					
 				<% end %>
