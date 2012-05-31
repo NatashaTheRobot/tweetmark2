@@ -14,7 +14,7 @@
 				<% unless @hashtags.nil? %>
 					<% @hashtags.each do |h| %>
 				   		<li class='home_nav_item'>
-							<%= link_to "##{h}", "/tags/#{h}"%>
+							<a href='<%= "/tags/#{h}" %>'>#<%= "#{h}" %><span class='unread'><%= "#{@hashtags_count[h]}" %></span></a>	
 						</li>
 					<% end %>
 					<li class='home_nav_item'> <%= link_to "untagged", "/tags/notag"%></li>

@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
             @user = User.find(session[:user_id])
             @tweets = @user.tweets  #"SELECT * FROM tweets WHERe user_id=#{user_id}"
             @hashtags = []
-            @tweets_with_hashtags = []
+            @hashtags_count = Hash.new # {hashtag => count}
             if @tweets.length > 0
                 tweet_ids = []
                 @tweets.each do |tweet|
@@ -15,7 +15,11 @@ class StaticPagesController < ApplicationController
                 if hashtags != []
                     hashtags.each do |hashtag|
                         @hashtags << hashtag[:text] unless @hashtags.include?(hashtag[:text])
-                        @tweets_with_hashtags << hashtag[:tweet_id] unless @tweets_with_hashtags.include?(:tweet_id)
+                        unless @hashtags_count.has_key?(hashtag[:text])
+                            @hashtags_count[hashtag[:text]] = 1 
+                        else
+                           @hashtags_count[hashtag[:text]] += 1
+                        end
                     end
                 end
             @hashtags.sort! #sort hashtags alphabetically    
