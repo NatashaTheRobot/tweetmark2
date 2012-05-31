@@ -12,11 +12,14 @@
 		<div class='section'>
 			<ul>
 				<% unless @hashtags.nil? %>
-				<% @hashtags.each do |h| %>
-				   <li class='home_nav_item'>
-						<%= link_to "##{h}", "/tags/#{h}"%>
-					</li>
-				<% end %>
+					<% @hashtags.each do |h| %>
+				   		<li class='home_nav_item'>
+							<%= link_to "##{h}", "/tags/#{h}"%>
+						</li>
+					<% end %>
+					<li class='home_nav_item'> <%= link_to "untagged", "/tags/notag"%></li>
+					<!--<li class="messages-item home_nav_item"><span class='unread'>5</span></li>-->
+					
 				<% end %>
 			<!--
 			<li class='messages-item home_nav_item'>
