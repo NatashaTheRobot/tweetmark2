@@ -2,17 +2,7 @@
  <%= Tweet.get_user_tweets(@user) %>
 
 <div class="row-fluid">
-	<div class="span2" id="tag-sidebar">
-		<%= image_tag(@user.image) %>
-		
-		<ul>
-			<% unless @hashtags.nil? %>
-			<% @hashtags.each do |h| %>
-			   <li><%= link_to "##{h}", "/tags/#{h}"%></li>
-			<% end %>
-			<% end %>
-		</ul>
-	</div>
+	<%= render "static_pages/sidebar"%>
 	<div class="span8">
 		<ul>
 			<% if @user.tweets.any? %>

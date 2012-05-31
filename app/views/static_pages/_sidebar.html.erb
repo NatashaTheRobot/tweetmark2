@@ -1,0 +1,83 @@
+<div class="span3 sidebar">
+	<div class='sidebar-module'>
+		<div class='section header'>
+			<div class='pic'>
+				<%= image_tag(@user.image) %>
+				<!--<a href="/natashamurashev"><img alt="Natasha Murashev" class="angel_image" src="https://s3.amazonaws.com/photos.angel.co/users/31725-medium?1305000485" /></a>-->
+			</div>
+			<div class='name'>
+				<a href="http://twitter.com/<%= current_user.screen_name %>" target='_blank'>@<%= current_user.screen_name %></a>
+			</div>
+		</div>
+		<div class='section'>
+			<ul>
+				<% unless @hashtags.nil? %>
+				<% @hashtags.each do |h| %>
+				   <li class='home_nav_item'>
+						<%= link_to "##{h}", "/tags/#{h}"%>
+					</li>
+				<% end %>
+				<% end %>
+			<!--
+			<li class='messages-item home_nav_item'>
+			<a href='/messages'>
+			<strong>Messages</strong>
+			<span class='unread'>5</span>
+			</a>
+			</li>
+			<li class="home_nav_item activity-on-you"><a href="/notifications">Notifications</a></li>
+			<li class='home_nav_item discussion'>
+				<a href='/posts'>
+				<strong>Posts</strong>
+				<span class='unread'>22</span>
+				</a>
+			</li>-->
+			</ul>
+			<div class='cb'></div>
+		</div>
+	</div>
+</div>
+<% 
+=begin
+<div class="span2" id="tag-sidebar">
+	
+	<h3>#hashtags</h3>
+	<ul>
+		<% unless @hashtags.nil? %>
+		<% @hashtags.each do |h| %>
+		   <li><%= link_to "##{h}", "/tags/#{h}"%></li>
+		<% end %>
+		<% end %>
+	</ul>
+</div>
+
+<div class='left_bar'>
+	<div class='home index'>
+		<div class=" home-left_modules user">
+			<div class='section header'>
+				<div class='pic'>
+					<a href="/natashamurashev"><img alt="Natasha Murashev" class="angel_image" src="https://s3.amazonaws.com/photos.angel.co/users/31725-medium?1305000485" /></a>
+				</div>
+				<div class='name'>
+					<a href="/natashamurashev">Natasha Murashev</a>
+				</div>
+			</div>
+			<div class='section'>
+				<ul>
+				<li class='messages-item home_nav_item'>
+				<a href='/messages'>
+				<strong>Messages</strong>
+				<span class='unread'>5</span>
+				</a>
+				</li>
+				<li class="home_nav_item activity-on-you"><a href="/notifications">Notifications</a></li>
+				<li class='home_nav_item discussion'>
+					<a href='/posts'>
+					<strong>Posts</strong>
+					<span class='unread'>22</span>
+					</a>
+				</li>
+				</ul>
+				<div class='cb'></div>
+			</div>
+=end %>
