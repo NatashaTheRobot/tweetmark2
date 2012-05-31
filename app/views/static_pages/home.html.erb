@@ -6,7 +6,7 @@
 	<div class="span8">
 		<ul>
 			<% if @user.tweets.any? %>
-			<h3>Your TweetMarks (<%= @tweets.count %>)</h3>
+			<h3><%= @tweets.count %> TweetMarks</h3>
 			<div class="tweets">
 				<%= render @tweets.sort_by{|t| t.tweetid}.reverse %>
             </div>

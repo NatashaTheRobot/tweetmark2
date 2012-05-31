@@ -11,7 +11,7 @@ class HashtagsController < ApplicationController
         end
         
         #if the tweet has no hashtag
-        if params[:hashtag] = "notag"
+        if params[:hashtag] == "notag"
             #get all tweet ids that have a hashtag
                tweetids_with_hashtags = []
                hashtags = Hashtag.where(:tweet_id => all_tweetids)
@@ -45,6 +45,7 @@ class HashtagsController < ApplicationController
             @tweets = all_tweets.where(:id => @all_hashtags[params[:hashtag]]) #matches ids for specific hashtag text
         
         end
+        
         render "static_pages/home"
     end
 end
