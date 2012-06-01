@@ -17,9 +17,11 @@
 							<a href='<%= "/tags/#{h}" %>'>#<%= "#{h}" %><span class='unread'><%= "#{@hashtags[h]}" %></span></a>	
 						</li>
 					<% end %>
-					<li class='home_nav_item'> 
-						<a href='/tags/notag'>untagged <span class='unread'><%= @untagged_tweet_count%></span></a>
-					</li>
+					<% if @untagged_tweet_count != 0 %>
+						<li class='home_nav_item'> 
+							<a href='/tags/notag'>untagged <span class='unread'><%= @untagged_tweet_count%></span></a>
+						</li>
+					<% end %>
 				<% end %>
 			</ul>
 			<div class='cb'></div>
