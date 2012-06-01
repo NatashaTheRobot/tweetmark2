@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120601201205) do
+ActiveRecord::Schema.define(:version => 20120601202841) do
 
   create_table "hashtags", :force => true do |t|
     t.string   "text"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20120601201205) do
     t.datetime "updated_at",                  :null => false
     t.integer  "tweetid"
     t.text     "extended_url", :limit => 255
-    t.string   "site_title"
+    t.text     "site_title",   :limit => 255
   end
 
   create_table "users", :force => true do |t|

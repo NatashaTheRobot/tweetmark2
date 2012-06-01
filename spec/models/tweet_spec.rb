@@ -11,7 +11,7 @@
 #  updated_at   :datetime        not null
 #  tweetid      :integer
 #  extended_url :text(255)
-#  site_title   :string(255)
+#  site_title   :text(255)
 #
 
 require 'spec_helper'
