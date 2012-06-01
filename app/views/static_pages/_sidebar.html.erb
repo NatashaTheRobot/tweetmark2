@@ -12,75 +12,17 @@
 		<div class='section'>
 			<ul>
 				<% unless @hashtags.nil? %>
-					<% @hashtags.each do |h| %>
+					<% @hashtags.each_key do |h| %>
 				   		<li class='home_nav_item'>
-							<a href='<%= "/tags/#{h}" %>'>#<%= "#{h}" %><span class='unread'><%= "#{@hashtags_count[h]}" %></span></a>	
+							<a href='<%= "/tags/#{h}" %>'>#<%= "#{h}" %><span class='unread'><%= "#{@hashtags[h]}" %></span></a>	
 						</li>
 					<% end %>
-					<li class='home_nav_item'> <%= link_to "untagged", "/tags/notag"%></li>
-					<!--<li class="messages-item home_nav_item"><span class='unread'>5</span></li>-->
-					
+					<li class='home_nav_item'> 
+						<a href='/tags/notag'>untagged <span class='unread'><%= @untagged_tweet_count%></span></a>
+					</li>
 				<% end %>
-			<!--
-			<li class='messages-item home_nav_item'>
-			<a href='/messages'>
-			<strong>Messages</strong>
-			<span class='unread'>5</span>
-			</a>
-			</li>
-			<li class="home_nav_item activity-on-you"><a href="/notifications">Notifications</a></li>
-			<li class='home_nav_item discussion'>
-				<a href='/posts'>
-				<strong>Posts</strong>
-				<span class='unread'>22</span>
-				</a>
-			</li>-->
 			</ul>
 			<div class='cb'></div>
 		</div>
 	</div>
 </div>
-<% 
-=begin
-<div class="span2" id="tag-sidebar">
-	
-	<h3>#hashtags</h3>
-	<ul>
-		<% unless @hashtags.nil? %>
-		<% @hashtags.each do |h| %>
-		   <li><%= link_to "##{h}", "/tags/#{h}"%></li>
-		<% end %>
-		<% end %>
-	</ul>
-</div>
-
-<div class='left_bar'>
-	<div class='home index'>
-		<div class=" home-left_modules user">
-			<div class='section header'>
-				<div class='pic'>
-					<a href="/natashamurashev"><img alt="Natasha Murashev" class="angel_image" src="https://s3.amazonaws.com/photos.angel.co/users/31725-medium?1305000485" /></a>
-				</div>
-				<div class='name'>
-					<a href="/natashamurashev">Natasha Murashev</a>
-				</div>
-			</div>
-			<div class='section'>
-				<ul>
-				<li class='messages-item home_nav_item'>
-				<a href='/messages'>
-				<strong>Messages</strong>
-				<span class='unread'>5</span>
-				</a>
-				</li>
-				<li class="home_nav_item activity-on-you"><a href="/notifications">Notifications</a></li>
-				<li class='home_nav_item discussion'>
-					<a href='/posts'>
-					<strong>Posts</strong>
-					<span class='unread'>22</span>
-					</a>
-				</li>
-				</ul>
-				<div class='cb'></div>
-			</div>
-=end %>
