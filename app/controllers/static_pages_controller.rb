@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
             #get the user's tweets and display them
             @user = User.find(session[:user_id])
             @tweets = @user.tweets  #"SELECT * FROM tweets WHERe user_id=#{user_id}"
+            @tweets_count = @tweets.count
             @hashtags = Hash.new # {hashtag => count}
             if @tweets.length > 0
                 @tweet_ids = []

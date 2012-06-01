@@ -9,6 +9,7 @@ class HashtagsController < ApplicationController
         all_tweets.each do |tweet|
            all_tweetids << tweet.id 
         end
+        @tweets_count = all_tweetids.length
         
         #if the tweet has no hashtag
         if params[:hashtag] == "notag"

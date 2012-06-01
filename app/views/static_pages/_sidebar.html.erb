@@ -11,6 +11,9 @@
 		</div>
 		<div class='section'>
 			<ul>
+				<li class='home_nav_item'> 
+					<a href='/'>all tweetmarks <span class='unread'><%= @tweets_count %></span></a>
+				</li>
 				<% unless @hashtags.nil? %>
 					<% @hashtags.each_key do |h| %>
 				   		<li class='home_nav_item'>
