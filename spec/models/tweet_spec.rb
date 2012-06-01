@@ -10,7 +10,7 @@
 #  user_id      :integer
 #  updated_at   :datetime        not null
 #  tweetid      :integer
-#  extended_url :string(255)
+#  extended_url :text(255)
 #  site_title   :string(255)
 #
 
