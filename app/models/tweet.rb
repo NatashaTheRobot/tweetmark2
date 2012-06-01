@@ -83,6 +83,7 @@ class Tweet < ActiveRecord::Base
   def self.get_url_titles #gets titles for all the urls
       tweets = Tweet.all
       tweets.each do |tweet|
+          break if tweet.site_title != nil
           begin
               html = open(tweet[:urls])
           rescue
