@@ -69,15 +69,35 @@ class Tweet < ActiveRecord::Base
               end
           end
      end
-  
-  def self.get_tweets
+     
+     
+     def self.get_tweets #scheduled daily task to get all user tweets
       
-      #get user info
-      users = User.all
-      users.each do |user|
-          self.get_user_tweets(user)
-      end
-  end
+         #get user info
+         users = User.all
+         users.each do |user|
+             self.get_user_tweets(user)
+         end
+     end
   
+  def self.get_url_titles #gets titles for all the urls
+      tweets = Tweet.all
+      tweets.each do |tweet|
+          begin
+              html = open(tweet[:urls])
+          rescue
+              puts "Redirect not working!"
+              tweet[:urls]
+              next
+          end
+          doc = Nokogiri::HTML(html.read)
+          doc.encoding = 'utf-8'
+          title = doc.at_css('title')
+          unless title.nil? or title == ""
+              tweet.site_title = CGI::escape(title.children.text.strip.gsub(/\n/, " "))
+              tweet.save
+          end 
+      end 
+   end
 
 end

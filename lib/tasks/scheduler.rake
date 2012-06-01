@@ -4,3 +4,9 @@ task :get_tweets => :environment do
     Tweet.get_tweets
     puts "done."
 end
+
+task :get_url_titles => :environment do
+    puts "Getting users"
+    Tweet.get_url_titles
+    puts "done."
+end
